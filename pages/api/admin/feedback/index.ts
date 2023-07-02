@@ -9,18 +9,11 @@ import { z } from "zod";
 /*
     FEEDBACK
 */
-import { Feedback, feedbackSchema } from "@/lib/feedback/schema";
 import {
-  createFeedback,
   getAllFeedback,
   getFeedbackByUser,
 } from "@/lib/feedback/server";
 
-/*
-  AUTH
-*/
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
@@ -39,7 +32,7 @@ router.get(async (req, res) => {
       const feedback = getAllFeedback();
 
       // RETURN FEEDBACK
-      return res.status(200).json({ feedback });
+      return res.status(200).json(feedback);
     }
 
     const emailParams = z
@@ -51,7 +44,7 @@ router.get(async (req, res) => {
     const feedback = getFeedbackByUser(emailParams);
 
     // RETURN FEEDBACK
-    return res.status(200).json({ feedback });
+    return res.status(200).json(feedback);
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: String(error), code: "400" });

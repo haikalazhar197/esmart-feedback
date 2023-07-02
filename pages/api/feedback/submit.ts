@@ -10,15 +10,8 @@ import { createRouter } from "next-connect";
 import { Feedback, feedbackSchema } from "@/lib/feedback/schema";
 import { createFeedback } from "@/lib/feedback/server";
 
-/*
-  AUTH
-*/
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-// FUNCTION TO SPLEEP
-const sleep = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms));
+import sleep from "@/lib/sleep";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
@@ -32,8 +25,8 @@ router.post(async (req, res) => {
   //   }
 
   try {
-    // SLEEP FOR 2 SECOND
-    await sleep(2000);
+    // SLEEP FOR 1 SECOND
+    await sleep(1000);
 
     const feedback = feedbackSchema.parse(data);
 

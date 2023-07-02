@@ -145,7 +145,7 @@ const Home: NextComponentWithLayoutType = () => {
 
   const { mutate, isLoading, data } = useSubmitfeedback({
     onSuccess: (data) => {
-      console.log(data);
+      router.push("/submitted");
     },
   });
 

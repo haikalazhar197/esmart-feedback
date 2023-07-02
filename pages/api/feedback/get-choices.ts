@@ -3,19 +3,8 @@
 */
 import { NextApiRequest, NextApiResponse } from "next";
 import { createRouter } from "next-connect";
-import { z } from "zod";
 
 import { getFeedbackChoices } from "@/lib/feedback/server";
-
-/*
-  AUTH
-*/
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/pages/api/auth/[...nextauth]";
-
-// FUNCTION TO SPLEEP
-const sleep = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 

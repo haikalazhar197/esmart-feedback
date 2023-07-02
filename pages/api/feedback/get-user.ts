@@ -7,32 +7,18 @@ import { z } from "zod";
 
 // import { getFeedbackByUser } from "@/lib/feedback";
 
-/*
-  AUTH
-*/
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-// FUNCTION TO SPLEEP
-const sleep = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+import sleep from "@/lib/sleep";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
 router.get(async (req, res) => {
   const { email } = req.query;
 
-  console.log("The email", email);
-
-  //   const session = await getServerSession(req, res, authOptions);
-
-  //   if (!session) {
-  //     return res.status(401).json({ message: "Unauthorized", code: "401" });
-  //   }
-
   try {
-    // SLEEP FOR 2 SECOND
-    await sleep(2000);
+    // SLEEP FOR 1 SECOND
+    await sleep(1000);
 
     const emailParams = z
       .string({
