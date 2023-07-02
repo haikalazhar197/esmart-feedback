@@ -2,6 +2,7 @@ import { Loader } from "@/components/Loader";
 import { Table } from "@/components/Table";
 import {
   useGetFeedback,
+  useGetRandomEmail,
   useGetUser,
   useSubmitfeedback,
 } from "@/lib/feedback/client";
@@ -13,25 +14,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { CircleCheck, MoodConfuzed, MoodSad } from "tabler-icons-react";
 
 const Home: NextComponentWithLayoutType = () => {
   const router = useRouter();
 
   const { data, isLoading } = useGetFeedback();
 
+  const { data: email } = useGetRandomEmail();
+
   if (isLoading) {
     return (
-      <main className=" container flex w-full flex-1 flex-col items-center justify-center space-y-11 px-20 text-center">
-        <Loader />
-      </main>
+      <>
+        <Head>
+          <title>eSmart</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main className=" container flex w-full flex-1 flex-col items-center justify-center space-y-11 px-20 text-center">
+          <Loader />
+        </main>
+      </>
     );
   }
 
   if (!data)
     return (
-      <main className=" container flex w-full flex-1 flex-col items-center justify-center space-y-11 px-20 text-center">
-        <p className="text-3xl font-semibold text-gray-600">No Data!</p>
-      </main>
+      <>
+        <Head>
+          <title>eSmart</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main className=" container flex w-full flex-1 flex-col items-center justify-center space-y-11 px-20 text-center">
+          <p className="text-3xl font-semibold text-gray-600">No Data!</p>
+        </main>
+      </>
     );
 
   return (
@@ -48,7 +64,7 @@ const Home: NextComponentWithLayoutType = () => {
 
         <div className="flex justify-end">
           <Link
-            href="/?email=emart@testmail.com"
+            href={`/?email=${email || "me@me.com"}`}
             target="_blank"
             className="text-sm font-medium text-gray-600 hover:text-gray-700 bg-gray-100 p-2 rounded-md"
           >
@@ -73,6 +89,31 @@ const Home: NextComponentWithLayoutType = () => {
               {
                 title: "Comment",
                 dataIndex: "comment",
+              },
+              {
+                title: "Status",
+                key: "status",
+                render(value, record, index) {
+                  if (record.feedback === "terrible") {
+                    return (
+                      <MoodSad color="#b91c1c" size={20} strokeWidth={1.5} />
+                    );
+                  }
+
+                  if (record.feedback === "okay") {
+                    return (
+                      <MoodConfuzed
+                        color="#0ea5e9"
+                        size={20}
+                        strokeWidth={1.5}
+                      />
+                    );
+                  }
+
+                  return (
+                    <CircleCheck color="#16a34a" size={20} strokeWidth={1.5} />
+                  );
+                },
               },
             ]}
           />

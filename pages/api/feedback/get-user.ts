@@ -7,8 +7,6 @@ import { z } from "zod";
 
 // import { getFeedbackByUser } from "@/lib/feedback";
 
-
-
 import sleep from "@/lib/sleep";
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
@@ -28,10 +26,9 @@ router.get(async (req, res) => {
       .email({ message: "Invalid email" })
       .parse(email as string);
 
-    console.log("The emailParams", emailParams);
-
-    // GET FEEDBACK BY USER -- JUST TO ENSURE THE IN MEMORY DATABASE IS WORKING
-    // const feedback = getFeedbackByUser(emailParams);
+    /*
+        VALIDATE THE USER EXIST ON THE SYSTEM...
+      */
 
     // RETURN USER EMAIL
     return res.status(200).json({ email: emailParams });
