@@ -14,13 +14,12 @@ The application runs on port 3000
 
 ### Using the app
 
-- Visit the admin page to view the list of feedback [Admin Page](http://localhost:3000/admin)
+- Visit the admin page to view the list of feedback [Admin Page](http://localhost:3000/admin/feedback)
 - Click the Go to Demo button on the top left of the page to go to the feedback form page
 - Once feedback has been submitted go back to the admin page to check the results
 
 ### Note
 
 - The application has to be built in order for the application to work properly with in memory store on the server.
-- Because of the nature of serverless being stateless, this app will not work on platforms providing such service.
 - No authentication was implemented on the application for simplicity purposes.
 - Some of the code seen on this codebase are my codes taken from previous codebases.
