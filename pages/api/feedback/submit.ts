@@ -16,6 +16,10 @@ import { createFeedback } from "@/lib/feedback/server";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
+// FUNCTION TO SPLEEP
+const sleep = (ms: number) =>
+  new Promise<void>((resolve) => setTimeout(resolve, ms));
+
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
 router.post(async (req, res) => {
@@ -28,6 +32,9 @@ router.post(async (req, res) => {
   //   }
 
   try {
+    // SLEEP FOR 2 SECOND
+    await sleep(2000);
+
     const feedback = feedbackSchema.parse(data);
 
     // CREATE FEEDBACK

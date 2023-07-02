@@ -7,12 +7,22 @@ export const useGetUser = () => {
   const { email } = router.query;
 
   const { data, error, isLoading } = useSWR(
-    `/api/feedback/get-user?email=${email}`,
+    `get-user-email-${email}`,
     async (url) => {
-      const data = await fetch(url).then((res) => res.json());
+      if (!z.string().email().safeParse(email)) return null;
 
-      console.log(" user ", data);
-      return data;
+      const data = await fetch(`/api/feedback/get-user?email=${email}`).then(
+        (res) => res.json()
+      );
+
+      const { email: userEmail } = z
+        .object({
+          email: z.string().email(),
+        })
+        .parse(data);
+
+      console.log(" user ", userEmail);
+      return userEmail;
     }
   );
 
