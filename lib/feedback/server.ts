@@ -10,9 +10,8 @@ const feedback: Feedback[] = [];
 */
 
 export const createFeedback = (data: Feedback) => {
-  const newFeedback = feedbackSchema.parse(data);
-  feedback.push(newFeedback);
-  return newFeedback;
+  feedback.push(data);
+  return data;
 };
 
 export const getAllFeedback = () => {

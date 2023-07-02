@@ -1,20 +1,22 @@
-import { Loader } from "@/components/Loader";
-import { Table } from "@/components/Table";
-import {
-  useGetFeedback,
-  useGetRandomEmail,
-  useGetUser,
-  useSubmitfeedback,
-} from "@/lib/feedback/client";
-import keys from "@/lib/keys";
-import { Tab } from "@headlessui/react";
+/*
+  NEXT
+*/
 import type { NextComponentWithLayoutType } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+
+/*
+  COMPONENTS
+*/
+import { Loader } from "@/components/Loader";
+import { Table } from "@/components/Table";
 import { CircleCheck, MoodConfuzed, MoodSad } from "tabler-icons-react";
+
+/*
+  LIB
+*/
+import { useGetFeedback, useGetRandomEmail } from "@/lib/feedback/client";
 
 const Home: NextComponentWithLayoutType = () => {
   const router = useRouter();

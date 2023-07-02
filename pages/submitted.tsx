@@ -1,5 +1,12 @@
+/*
+  NEXT
+*/
 import type { NextComponentWithLayoutType } from "next";
 import Head from "next/head";
+
+/*
+COMPONENTS
+*/
 import { Check, CircleCheck } from "tabler-icons-react";
 
 const Home: NextComponentWithLayoutType = () => {

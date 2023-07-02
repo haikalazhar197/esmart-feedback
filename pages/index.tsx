@@ -1,15 +1,26 @@
-import { Loader } from "@/components/Loader";
-import { useGetUser, useSubmitfeedback } from "@/lib/feedback/client";
-import keys from "@/lib/keys";
-import { Tab } from "@headlessui/react";
+/*
+  NEXT
+*/
 import type { NextComponentWithLayoutType } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
 
+/*
+  REACT
+*/
+import { useState } from "react";
+
+/*
+  COMPONENTS
+*/
+import { Loader } from "@/components/Loader";
 import { MoodConfuzed, MoodSad, MoodHappy } from "tabler-icons-react";
+
+/*
+  LIB
+*/
+import keys from "@/lib/keys";
+import { useGetUser, useSubmitfeedback } from "@/lib/feedback/client";
 
 /*
   FEEDBACK CHOICES
